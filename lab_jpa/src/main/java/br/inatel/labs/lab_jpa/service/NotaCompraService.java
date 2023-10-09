@@ -31,6 +31,16 @@ public class NotaCompraService {
 	public Optional<NotaCompraItem> buscarNotaCompraItemPeloId(Long id) {
 		return em.find(NotaCompraItem.class,id);
 	}
+
+    public NotaCompra buscarNotaCompraPeloIdComListaItem(Long id) {
+		if(opNotaCompra.isPresent()) {
+			NotaCompra notaCompra = opNotaCompra.get();
+			notaCompra.getListaNotaCompraItem().size();
+			return notaCompra;
+		} else {
+			throw new RuntimeException("Nenhuma nota compra encontrada");
+		}
+	}
 	
 	public List<NotaCompraItem> listarNotaCompraItem(){
 		return em.createQuery("Select i from NotaCompra i", NotaCompraItem.class).getResultList();

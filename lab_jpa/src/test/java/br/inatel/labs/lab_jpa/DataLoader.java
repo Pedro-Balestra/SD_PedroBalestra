@@ -1,4 +1,4 @@
-@SpringBootTest
+// @SpringBootTest
 class DataLoader {
 	
 	@Autowired
@@ -10,7 +10,7 @@ class DataLoader {
 	@Autowired
 	private NotaCompraService notaCompraService;
 
-	@Test
+	// @Test
 	void load() {
 		
 		//1.Produto
