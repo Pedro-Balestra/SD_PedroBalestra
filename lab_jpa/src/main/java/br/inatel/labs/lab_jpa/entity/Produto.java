@@ -1,3 +1,12 @@
+package br.inatel.labs.lab_jpa.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class Produto {
 
@@ -9,7 +18,7 @@ public class Produto {
 	@Size(min = 2, max = 100)
 	private String descricao;
 
-	@ManyToMany(mappeBy = "listaProduto")
+	@ManyToMany(mappedBy = "listaProduto")
 	private List<Fornecedor> listaFornecedor;
 
 	// construtores

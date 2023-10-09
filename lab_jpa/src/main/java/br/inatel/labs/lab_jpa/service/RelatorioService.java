@@ -1,3 +1,13 @@
+package br.inatel.labs.lab_jpa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.inatel.labs.lab_jpa.dto.TotalCompradoPorFornecedorDTO;
+import br.inatel.labs.lab_jpa.repository.RelatorioRepository;
+
 @Service
 public class RelatorioService {
 	

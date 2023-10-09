@@ -1,8 +1,19 @@
+package br.inatel.labs.lab_jpa.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import br.inatel.labs.lab_jpa.dto.TotalCompradoPorFornecedorDTO;
+import br.inatel.labs.lab_jpa.entity.NotaCompraItem;
+
 @Repository
 public interface RelatorioRepository extends JpaRepository<NotaCompraItem, Long>{
-	
+
 	@Query(""" 
-			select new br.inatel.labs.lab_jpa.dto.TotalCompraPorFornecedorDTO
+			select new br.inatel.labs.lab_jpa.dto.TotalCompradoPorFornecedorDTO
 				( f.razaoSocial
 				, sum(i.quantidade * i.valorCompraProduto)	
 				)
