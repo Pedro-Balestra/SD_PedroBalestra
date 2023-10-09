@@ -12,6 +12,16 @@ public class Fornecedor {
 	@ManyToMany
 	private List<Produto> listaProduto;
 
+	//construtores
+	public Fornecedor() {
+		
+	}
+	
+	public Fornecedor(String razaoSocial) {
+		super();
+		this.razaoSocial = razaoSocial;
+	}
+
 	// Acessores
 	public Long getId() {
 		return id;
@@ -35,6 +45,27 @@ public class Fornecedor {
 
 	public void setListaProduto(List<Produto> listaProduto) {
 		this.listaProduto = listaProduto;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fornecedor other = (Fornecedor) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "Fornecedor [id=" + id + ", razaoSocial=" + razaoSocial + "]";
 	}
     
 }

@@ -2,6 +2,7 @@
 public class NotaCompra {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotNull
@@ -13,6 +14,17 @@ public class NotaCompra {
 
     @OneToMany(mappeBy = "notaCompra")
     private List<NotaCompaItem> listaNotaCompraItem;
+
+	//construtores
+	public NotaCompra() {
+		
+	}
+	
+	public NotaCompra(@NotNull @Past LocalDate dataEmissao, Fornecedor fornecedor) {
+		super();
+		this.dataEmissao = dataEmissao;
+		this.fornecedor = fornecedor;
+	}
 
     // acessores
 	public Long getId() {
@@ -56,5 +68,27 @@ public class NotaCompra {
 
         return totalNota;
     }   
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NotaCompra other = (NotaCompra) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "NotaCompra [id=" + id + ", dataEmissao=" + dataEmissao + "]";
+	}
 
 }

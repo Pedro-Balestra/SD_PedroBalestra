@@ -12,6 +12,16 @@ public class Produto {
 	@ManyToMany(mappeBy = "listaProduto")
 	private List<Fornecedor> listaFornecedor;
 
+	// construtores
+	public Produto() {
+		
+	}
+	
+	public Produto(@NotNull @Size(min = 2, max = 100) String descricao) {
+		super();
+		this.descricao = descricao;
+	}
+
 	// acessores
 	public Long getId() {
 		return id;
@@ -35,6 +45,28 @@ public class Produto {
 
 	public void setListaFornecedor(List<Fornecedor> listaFornecedor) {
 		this.listaFornecedor = listaFornecedor;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", descricao=" + descricao + "]";
 	}
 
 }
