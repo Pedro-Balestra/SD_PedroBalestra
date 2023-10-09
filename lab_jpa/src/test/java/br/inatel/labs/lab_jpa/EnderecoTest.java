@@ -9,8 +9,8 @@ public class EnderecoTest {
 		
 		Endereco endereco = new Endereco();
 		endereco.setRua("Av. Joao de Camargo");
-		endereco.setCidade("Santa Rita");
 		endereco.setNumero("510");
+		endereco.setCidade("Santa Rita");
 		endereco.setUf("MG");
 		
 		service.salvar(endereco);

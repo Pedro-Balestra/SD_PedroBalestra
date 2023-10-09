@@ -5,26 +5,19 @@ public class FornecedorService {
 	@Autowired
 	private FornecedorRepository fornecedorRepository;
 	
-	@PersistenceContext
-	private EntityManager em;
-	
 	public Fornecedor salvar(Fornecedor f) {
-		f = em.merge(f);
-        return f;
+		return fornecedorRepository.save(f);
 	}
 	
 	public Optional<Fornecedor> buscarPeloId(Long id) {
-        Fornecedor fornecedorEncontrado = em.find(Fornecedor.class, id)
-		return fornecedorEncontrado;
+		return fornecedorRepository.findById(id);
 	}
 	
 	public List<Fornecedor> listar(){
-        String jpql = "Select f from Fornecedor f";
-        List<Fornecedor> fornecedores - em.createQuery(jpql, Fornecedor.class)
-		return fornecedores;
+		return fornecedorRepository.findAll();
 	}
 	
 	public void remover(Fornecedor f) {
-        em.remove(em.merge(f));
+		fornecedorRepository.delete(f);
 	}
 }

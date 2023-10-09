@@ -2,28 +2,23 @@
 @Transactional
 public class ProdutoService{
     
-    @PersistenceContext
-    private EntityManager em;
-
-    public Produto salvar(Produto p){
-        p = em.merge(p);
-        return p;
-    }
-
-    public Produto buscaPeloId(Long id){
-        Produto produtoEncontrado = em.find(Produto.class,id);
-        return produtoEncontrado;
-    }
-
-    public List<Produto> listar(){
-        List<Produto> produtos = em.createQuery("Select p from Produto p", Produto.class).getResultList();
-        return produtos;
-    }
-
-    
-    public void remover(Produto p) {
-        p = em.merge( p );
-        em.remove( p );
-    }
+    @Autowired
+    private ProdutoRepository produtoRepository;
+	
+	public Produto salvar(Produto p) {
+		return produtoRepository.save(p);
+	}
+	
+	public Optional<Produto> buscarPeloId(Long id) {
+		return produtoRepository.findById(id);
+	}
+	
+	public List<Produto> listar(){
+		return produtoRepository.findAll();
+	}
+	
+	public void remove(Produto p) {
+		produtoRepository.delete(p);
+	}
 
 }
